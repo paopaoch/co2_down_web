@@ -1,0 +1,13 @@
+{
+	"vetur.format.options.tabSize": 4,
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+	"emmet.syntaxProfiles": {
+		"vue-html": "html",
+		"vue": "html"
+	},
+	"emmet.includeLanguages": {
+		"vue-html": "html",
+		"vue": "html"
+	}
+}
