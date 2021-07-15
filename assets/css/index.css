@@ -5,8 +5,9 @@
 		rgba(129,225,196,1) 0%,
 		rgba(172,207,227,1) 35%,
 		rgba(152,227,205,0.6766381766381766) 100%), url('/IMG_2165.JPG');
-	/* background-size: 400vh; */
-	min-height: 200vh;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
 	padding-top: 100px;
 }
 

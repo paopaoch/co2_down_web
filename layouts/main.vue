@@ -16,7 +16,7 @@
 
                     <b-collapse id="nav-collapse" is-nav>
                         <b-navbar-nav>
-                            <b-nav-item href="#" active>Home</b-nav-item>
+                            <b-nav-item href="/" active>Home</b-nav-item>
 
                             <b-nav-item-dropdown text="About us">
                                 <b-dropdown-item
@@ -34,7 +34,7 @@
                             
 
                             <b-nav-item href="#">Contact us</b-nav-item>
-							<b-nav-item href="#">Donation</b-nav-item>
+							<b-nav-item href="/donation">Donation</b-nav-item>
                         </b-navbar-nav>
 
                         <b-navbar-nav class="ml-auto">
@@ -50,5 +50,6 @@
 </template>
 <script>
 import '~/assets/css/main.css';
-export default {};
+export default {
+};
 </script>
