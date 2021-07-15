@@ -46,6 +46,12 @@ export default {
     components: {
         DonateBtn,
 		Chev
-    }
+    },
+	data() {
+		return {
+			home: false,
+			donation: true
+		}
+	}
 };
 </script>
