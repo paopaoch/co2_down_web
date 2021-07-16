@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<p>This will be a paragraph that will contain the <a href="#" class="speech-bubble">speech bubble link</a> that shows off how to create this stupid thing.
+	</p>
+</body>
+<style>
+	.speech-bubble {
+    position: relative;
+}
+
+.speech-bubble:after {
+    background-color: #FFFFFF;
+    border: 2px solid #DEDEDE;
+    border-radius: 7px;
+    content: 'This is the speech bubble popout.';
+    display: none;
+    left: 0;
+    padding: 16px;
+    position: absolute;
+    top: calc(100% + 25px);
+    z-index: 1;
+}
+
+.speech-bubble:before {
+    background: #FFFFFF;
+    border-left: 2px solid #DEDEDE;
+    border-top: 2px solid #DEDEDE;
+    color: transparent;
+    content: '';
+    display: none;
+    height: 50px;
+    left: 22px;
+    position: absolute;
+    top: calc(100% - 1px);
+    transform: rotate(65deg);
+    width: 23px;
+    z-index: 2;
+}
+
+/* Show bubble on hover */
+.speech-bubble:hover:before,
+.speech-bubble:hover:after {
+    display: block;
+}
+</style>
+</html>

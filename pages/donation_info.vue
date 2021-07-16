@@ -20,7 +20,7 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col-2">
-                            <a href="https://www.google.com"
+                            <a href="donation_transaction"
                                 ><donate-btn></donate-btn>
                             </a>
                         </div>

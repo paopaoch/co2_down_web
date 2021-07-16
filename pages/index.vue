@@ -2,31 +2,44 @@
     <div>
         <div class="container-fluid bg-gradient">
             <div class="row">
-                <div class="col-2 offset-2">
-                    <vc-donut
-                        background="#9fd4da"
-                        :size="400"
-                        unit="px"
-                        :thickness="50"
-                        :has-legend="false"
-                        legend-placement="top"
-                        :sections="sections"
-                        :total="100"
-                        :start-angle="10"
-                        :auto-adjust-text-size="false"
-                        @section-click="handleSectionClick"
-                        @section-mouseover="handleSectionHover"
-                        class="text-bingsu-blue"
-                    >
-                        <h5 class="text-donut"
-                            >Total CO<sub>2</sub> Emission</h5>
-                        <h2>7809 kg</h2>
-                    </vc-donut>
+                <div class="col-3 offset-2">
+                    <div>
+                        <vc-donut
+							v-b-modal.modal-center
+                            background="#9fd4da"
+                            :size="400"
+                            unit="px"
+                            :thickness="50"
+                            :has-legend="false"
+                            legend-placement="top"
+                            :sections="sections"
+                            :total="100"
+                            :start-angle="10"
+                            :auto-adjust-text-size="false"
+                            @section-mouseover="handleSectionHover"
+                            class="text-bingsu-blue"
+                        >
+                            <h5 class="text-donut">
+                                Total CO<sub>2</sub> Emission
+                            </h5>
+                            <h2>{{totalCO2}} kg</h2>
+                        </vc-donut>
+                    </div>
                 </div>
                 <div
-                    class=" col-8 d-flex justify-content-center align-items-center"
+                    class=" col-7 d-flex justify-content-center align-items-center"
                 >
                     <h3>something here kid yung mai ork</h3>
+
+                    <div>
+                        <b-modal
+                            id="modal-center"
+                            centered
+                            :title="modalTitle + ' CO2 Emission'"
+                        >
+                            <p class="my-4">{{ modalCO2 }} kg of carbon</p>
+                        </b-modal>
+                    </div>
                 </div>
             </div>
 
@@ -49,21 +62,17 @@
                         :total="100"
                         :start-angle="0"
                         :auto-adjust-text-size="false"
-                        @section-click="handleSectionClick"
-                        @section-mouseover="handleSectionHover"
                         class="text-bingsu-blue"
                     >
-                        <h5 class="text-donut"
-                            >Trees planted</h5
-                        >
-                        <h1>{{sections2[0].value}}%</h1>
+                        <h5 class="text-donut">Trees planted</h5>
+                        <h1>{{ sections2[0].value }}%</h1>
                     </vc-donut>
                 </div>
             </div>
 
-			<div style="height: 25vh;"></div>
+            <div style="height: 25vh;"></div>
 
-			<footer-phone></footer-phone>
+            <footer-phone></footer-phone>
         </div>
     </div>
 </template>
@@ -72,33 +81,39 @@ import Donut from "vue-css-donut-chart";
 import "vue-css-donut-chart/dist/vcdonut.css";
 import Vue from "vue";
 import "~/assets/css/index.css";
-import FooterPhone from "~/components/footer_phone.vue"
+import FooterPhone from "~/components/footer_phone.vue";
 
 Vue.use(Donut);
 
 export default {
-	components: {
-		FooterPhone
-	},
+    components: {
+        FooterPhone
+    },
     layout: "main",
     data() {
         return {
             sections: [
-                { label: "Grab section", value: 30, color: "#8755ec" },
-                { label: "Food panda section", value: 30, color: "#f068c5" },
-                { label: "Robin hood section", value: 40, color: "#44cf5f" }
+                { label: "Robin Hood", value: 30, color: "#8755ec"},
+                { label: "Food Panda", value: 30, color: "#f068c5" },
+                { label: "Grab", value: 40, color: "#44cf5f" }
             ],
-			sections2: [
+            sections2: [
                 { label: "Trees section", value: 32, color: "#56d794" }
-            ]
+            ],
+			totalCO2: 7809,
+			modalTitle: '',
+			modalCO2: ''
         };
     },
     methods: {
-        handleSectionClick(section, event) {
-            console.log(`${section.label} clicked.`);
-        },
         handleSectionHover(section, event) {
-            console.log(`${section.label} hover.`);
+			this.modalTitle = section.label
+			const indexFound = this.sections.findIndex((item) => {
+					return item.label == section.label
+				})
+			this.modalCO2 = this.totalCO2 * this.sections[indexFound].value / 100
+			this.modalCO2 = parseInt(this.modalCO2)
+			console.log(this.modalCO2)
         }
     }
 };

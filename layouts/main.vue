@@ -22,14 +22,12 @@
                                 <b-nav-item href="/">Home</b-nav-item>
                             </div>
 
-							<div v-if="$route.name == 'donation' || $route.name == 'donation-info'">
-                                <b-nav-item href="#" active>Donation</b-nav-item>
+							<div v-if="$route.name == 'donation' || $route.name == 'donation_info' || $route.name == 'donation_transaction'">
+                                <b-nav-item href="/donation" active>Donation</b-nav-item>
                             </div>
                             <div v-else>
                                 <b-nav-item href="/donation">Donation</b-nav-item>
                             </div>
-
-                            <b-nav-item href="#">Contact Us</b-nav-item>
 
 							<div v-if="$route.name == 'about'">
                                 <b-nav-item href="#" active>About Us</b-nav-item>
@@ -55,7 +53,6 @@
     </div>
 </template>
 <script>
-import "~/assets/css/main.css";
 export default {
     data() {
         return {};

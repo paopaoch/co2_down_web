@@ -21,12 +21,12 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col-2">
-                            <a href="#"
+                            <a href="/donation_transaction"
                                 ><donate-btn></donate-btn>
                             </a>
                         </div>
 						<div class="col-4 d-flex align-items-center">
-                            <NuxtLink class="a-link" to="/donation-info"
+                            <NuxtLink class="a-link" to="/donation_info"
                                 >Learn More <chev style="padding: 0 0 2px 0px;"></chev>
                             </NuxtLink>
                         </div>
