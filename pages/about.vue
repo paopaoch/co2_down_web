@@ -2,18 +2,21 @@
     <div class="bg-gradient">
         <div class="container">
             <div class="row mb-4">
-                <div class="col-4 offset-4 text-center">
+                <div class="col-12 col-md-4 offset-md-4 text-center">
                     <h1 class="text-espresso-blue">Our Mission</h1>
                     <hr
                         class="mt-1 bg-espresso-blue"
-                        width="55%"
+                        width="200px"
                         style="margin: auto; height: 0.5px"
                     />
                 </div>
             </div>
             <div class="row mb-4">
                 <div class="col-12">
-                    <div class="card" style="width: 100%; border-radius: 20px; background-color: rgba(0, 0, 0, 0.2);">
+                    <div
+                        class="card"
+                        style="width: 100%; border-radius: 20px; background-color: rgba(0, 0, 0, 0.1);"
+                    >
                         <div class="card-body text-white">
                             <p>
                                 Amidst the growing concerns and risks associated
@@ -68,56 +71,151 @@
                 </div>
             </div>
             <div class="row my-4">
-                <div class="col-4 offset-4 text-center" style="margin-top: 50px">
+                <div
+                    class="col-12 col-md-4 offset-md-4 text-center"
+                    style="margin-top: 50px"
+                >
                     <h1 class="text-espresso-blue">The Team</h1>
                     <hr
                         class="mt-1 bg-espresso-blue"
-                        width="50%"
+                        width="180px"
                         style="margin: auto; height: 0.5px"
                     />
                 </div>
             </div>
-            <div class="row">
-                <div class="col-4">
+            <div class="row d-none d-lg-flex">
+                <div class="col-lg-4">
                     <team-card
                         img="/members/paopao.jpg"
                         name="Chulabutra (PaoPao) Chuenchoksan"
-                        role="Developer"
+                        role="Web and Backend Developer"
                     ></team-card>
                 </div>
-                <div class="col-4 d-flex justify-content-center">
+                <div class="col-lg-4 d-flex justify-content-center">
                     <team-card
                         img="/members/egai.jpg"
                         name="Nicharee (Yumiko) Suwannaroj"
-                        role="Developer"
+                        role="Front-end App Developer"
                     ></team-card>
                 </div>
-                <div class="col-4 d-flex justify-content-end">
+                <div class="col-lg-4 d-flex justify-content-end">
                     <team-card
                         img="/members/chap.jpg"
                         name="Chanop (Chap) Sethiwan"
-                        role="Developer"
+                        role="Cloud Admin and Backend Developer"
                     ></team-card>
                 </div>
             </div>
-            <div class="row py-4">
-                <div class="col-4 offset-2 d-flex justify-content-start">
+            <div class="row d-none d-lg-flex py-4">
+                <div class="col-lg-4 offset-lg-2 d-flex justify-content-start">
                     <team-card
                         img="/members/grace.jfif"
                         name="Chatchamol (Grace) Anantaprayoon"
-                        role="Business Analyst"
+                        role="Business Analyst and UI Designer"
                     ></team-card>
                 </div>
-                <div class="col-4 d-flex justify-content-end">
+                <div class=" col-lg-4 d-flex justify-content-end">
                     <team-card
                         img="/members/mim.jpg"
                         name="Nathatai (Mim) Saraya"
-                        role="Business Analyst"
+                        role="Business Analyst and UI Designer"
                     ></team-card>
                 </div>
             </div>
 
-			<footer-phone style="margin-top: 200px"></footer-phone>
+            <div class="row d-none d-md-flex d-lg-none">
+                <div class="col-6 d-flex justify-content-center">
+                    <team-card
+                        img="/members/paopao.jpg"
+                        name="Chulabutra (PaoPao) Chuenchoksan"
+                        role="Web and Backend Developer"
+                    ></team-card>
+                </div>
+                <div class="col-6 d-flex justify-content-center">
+                    <team-card
+                        img="/members/egai.jpg"
+                        name="Nicharee (Yumiko) Suwannaroj"
+                        role="Front-end App Developer"
+                    ></team-card>
+                </div>
+            </div>
+            <div class="row d-none d-md-flex d-lg-none mt-4">
+                <div class="col-12 d-flex justify-content-center">
+                    <team-card
+                        img="/members/chap.jpg"
+                        name="Chanop (Chap) Sethiwan"
+                        role="Cloud Admin and Backend Developer"
+                    ></team-card>
+                </div>
+            </div>
+            <div class="row d-none d-md-flex d-lg-none py-4">
+                <div class="col-6 d-flex justify-content-center">
+                    <team-card
+                        img="/members/grace.jfif"
+                        name="Chatchamol (Grace) Anantaprayoon"
+                        role="Business Analyst and UI Designer"
+                    ></team-card>
+                </div>
+                <div class="col-6 d-flex justify-content-center">
+                    <team-card
+                        img="/members/mim.jpg"
+                        name="Nathatai (Mim) Saraya"
+                        role="Business Analyst and UI Designer"
+                    ></team-card>
+                </div>
+            </div>
+
+            <div class="row d-sm-flex d-md-none mb-4">
+                <div class="col-12 d-flex justify-content-center">
+                    <team-card
+                        img="/members/paopao.jpg"
+                        name="Chulabutra (PaoPao) Chuenchoksan"
+                        role="Web and Backend Developer"
+                    ></team-card>
+                </div>
+            </div>
+
+			<div class="row d-sm-flex d-md-none mb-4">
+                <div class="col-12 d-flex justify-content-center">
+                    <team-card
+                        img="/members/egai.jpg"
+                        name="Nicharee (Yumiko) Suwannaroj"
+                        role="Front-end App Developer"
+                    ></team-card>
+                </div>
+            </div>
+
+			<div class="row d-sm-flex d-md-none mb-4">
+                <div class="col-12 d-flex justify-content-center">
+                    <team-card
+                        img="/members/chap.jpg"
+                        name="Chanop (Chap) Sethiwan"
+                        role="Cloud Admin and Backend Developer"
+                    ></team-card>
+                </div>
+            </div>
+
+			<div class="row d-sm-flex d-md-none mb-4">
+                <div class="col-12 d-flex justify-content-center">
+                    <team-card
+                        img="/members/grace.jfif"
+                        name="Chatchamol (Grace) Anantaprayoon"
+                        role="Business Analyst and UI Designer"
+                    ></team-card>
+                </div>
+            </div>
+
+			<div class="row d-sm-flex d-md-none">
+                <div class="col-12 d-flex justify-content-center">
+                    <team-card
+                        img="/members/mim.jpg"
+                        name="Nathatai (Mim) Saraya"
+                        role="Business Analyst and UI Designer"
+                    ></team-card>
+                </div>
+            </div>
+            
+            <footer-phone style="margin-top: 200px"></footer-phone>
         </div>
     </div>
 </template>
@@ -125,13 +223,13 @@
 import "~/assets/css/index.css";
 import "~/assets/css/about.css";
 import TeamCard from "~/components/team_card.vue";
-import FooterPhone from "~/components/footer_phone.vue"
+import FooterPhone from "~/components/footer_phone.vue";
 
 export default {
     layout: "main",
     components: {
         TeamCard,
-		FooterPhone
+        FooterPhone
     }
 };
 </script>

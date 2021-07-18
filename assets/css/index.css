@@ -9,15 +9,19 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	padding-top: 100px;
-	min-height: 100vh;
+	/* min-height: 100vh; */
 }
 
 .text-donut {
-	font-size: 1.2rem;
+	font-size: 2rem;
+}
+
+.text-head-donut {
+	font-size: 4rem;
 }
 
 .text-bingsu-blue {
-	color: #138E9F
+	color: #137785
 }
 
 .bg-bingsu-blue {

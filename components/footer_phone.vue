@@ -9,7 +9,7 @@
                 <!--Grid row-->
                 <div class="row">
                     <!--Grid column-->
-                    <div class="col-md-6 mb-4 mb-md-0">
+                    <div class="col-12 col-lg-6 mb-4 mb-md-0">
                         <div class="row text-white">
                             <h1>
                                 Track Your Order’s Carbon Footprint Now!
@@ -85,7 +85,7 @@
                     <!--Grid column-->
 
                     <!--Grid column-->
-                    <div class="offset-md-1 col-md-5 mb-4 mb-md-0 div-wrapper">
+                    <div class="d-none d-lg-flex col-lg-5 mb-0 mx-auto">
                         <img src="/Picture6.png" width="450" alt="" />
                     </div>
                     <!--Grid column-->
