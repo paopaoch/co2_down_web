@@ -5,7 +5,7 @@
                 fixed="top"
                 type="dark"
                 toggleable="lg"
-                style="background-color: rgba(0,0,0,0.7)"
+                style="background-color: rgba(76, 181, 149, 0.8)"
             >
                 <div class="container-fluid">
                     <b-navbar-brand class="ml-3"

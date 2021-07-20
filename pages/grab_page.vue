@@ -6,11 +6,11 @@
                     <img
                         class="rounded-circle"
                         src="/logo/grab.jpg"
-                        width="80"
+                        width="70"
                         alt=""
                     />
                 </div>
-                <div class="ml-3 col-8 pl-0 d-flex align-items-center">
+                <div class="col-8 pl-0 d-flex align-items-center">
                     <h1 class="text-bingsu-blue">Grab Holdings Inc.</h1>
                 </div>
             </div>
@@ -152,7 +152,6 @@
 import "~/assets/css/app_page.css";
 import "~/assets/css/index.css";
 
-import BarBingsu from "~/components/bar_bingsu.vue";
 import RankingElem from "~/components/ranking_elem.vue";
 
 import Donut from "vue-css-donut-chart";
@@ -163,7 +162,6 @@ Vue.use(Donut);
 export default {
     layout: "main",
     components: {
-        BarBingsu,
         RankingElem
     },
     data() {

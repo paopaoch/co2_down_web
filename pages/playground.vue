@@ -1,43 +1,122 @@
 <template>
-    <div>
-        <b-card
-            img-src="https://placekitten.com/300/300"
-            img-alt="Card image"
-            img-left
-            class="mb-3"
-        >
-            <b-card-text>
-                Some quick example text to build on the card and make up the
-                bulk of the card's content.
-            </b-card-text>
-        </b-card>
+    <div class="bg-gradient-cartree">
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-12 col-lg-1 pr-0 mr-4">
+                    <img
+                        class="rounded-circle"
+                        src="/logo/grab.jpg"
+                        width="70"
+                        alt=""
+                    />
+                </div>
+                <div
+                    class="col-12 col-lg-10 ml-3 ml-lg-0 pl-0 d-flex align-items-center"
+                >
+                    <h1 class="text-bingsu-blue">Grab Holdings Inc.</h1>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 col-lg-6">
+                    <div
+                        class="card"
+                        style="width: 100%; border-radius: 20px; background-color: rgba(0, 0, 0, 0.1);"
+                    >
+                        <div class="card-body">
+                            <h3 class="text-white">Grab Summary</h3>
+                            <div class="text-white mb-4">
+                                Mon 2 - Sun 8 August 2021
+                            </div>
+                            <bar-bingsu
+                                :chartdata="data"
+                                :options="options"
+                            ></bar-bingsu>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 mt-4 mt-lg-0 postion-relative">
+                    <doughnut-elem
+                        class="postion-absolute"
+                        style="z-index: 2; width: 100%; height: 100%;"
+                    ></doughnut-elem>
+                </div>
+            </div>
 
-
-		<b-list-group style="max-width: 300px;">
-      <b-list-group-item class="d-flex align-items-center">
-        <b-avatar class="mr-3"></b-avatar>
-        <span class="mr-auto">J. Circlehead</span>
-        <b-badge>5</b-badge>
-      </b-list-group-item>
-      <b-list-group-item class="d-flex align-items-center">
-        <b-avatar variant="primary" text="BV" class="mr-3"></b-avatar>
-        <span class="mr-auto">BootstrapVue</span>
-        <b-badge>12</b-badge>
-      </b-list-group-item>
-      <b-list-group-item class="my-4 d-flex align-items-center border-top">
-        <b-avatar variant="info" src="https://placekitten.com/300/300" class="mr-3"></b-avatar>
-        <span class="mr-auto">Super Kitty</span>
-        <b-badge>9</b-badge>
-      </b-list-group-item>
-      <b-list-group-item class="d-flex align-items-center">
-        <b-avatar variant="success" icon="people-fill" class="mr-3"></b-avatar>
-        <span class="mr-auto">ACME group</span>
-        <b-badge>7</b-badge>
-      </b-list-group-item>
-    </b-list-group>
+            <div class="row" style="height:30px"></div>
+        </div>
     </div>
 </template>
 <script>
-export default {};
+import "~/assets/css/app_page.css";
+import "~/assets/css/index.css";
+
+import RankingElem from "~/components/ranking_elem.vue";
+import DoughnutElem from "~/components/doughnut_elem.vue";
+
+
+export default {
+    layout: "main",
+    components: {
+        RankingElem,
+		DoughnutElem
+    },
+    data() {
+        return {
+            data: {
+                labels: [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday",
+                    "Sunday"
+                ],
+                datasets: [
+                    {
+                        label: "kg of Carbon",
+                        data: [180, 386, 298, 112, 438, 230, 379],
+                        backgroundColor: "rgba(68, 207, 95, 1)",
+                        borderWidth: 0
+                    }
+                ]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    yAxes: [
+                        {
+                            label: {
+                                display: false
+                            },
+                            ticks: {
+                                beginAtZero: true,
+                                fontColor: "white"
+                            },
+                            gridLines: {
+                                display: false
+                            }
+                        }
+                    ],
+                    xAxes: [
+                        {
+                            barPercentage: 0.25,
+                            ticks: {
+                                beginAtZero: true,
+                                fontColor: "white"
+                            },
+                            gridLines: {
+                                display: false
+                            }
+                        }
+                    ]
+                },
+                legend: {
+                    display: false
+                }
+            }
+            
+        };
+    }
+};
 </script>
-<style></style>
