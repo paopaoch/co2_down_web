@@ -2,40 +2,19 @@
     <div>
         <div class="container-fluid bg-gradient">
             <div class="row">
-                <div class="col-3 offset-2">
-                    <div>
-                        <vc-donut
-                            v-b-modal.modal-center
-                            background="#9fd4da"
-                            :size="600"
-                            unit="px"
-                            :thickness="45"
-                            :has-legend="false"
-                            legend-placement="top"
-                            :sections="sections"
-                            :total="100"
-                            :start-angle="0"
-                            :auto-adjust-text-size="false"
-                            @section-mouseover="handleSectionHover"
-                            class="text-bingsu-blue"
-                        >
-                            <h5 class="text-donut">
-                                Total CO<sub>2</sub> Emission
-                            </h5>
-                            <h2 class="text-head-donut">{{ totalCO2 }} kg</h2>
-                        </vc-donut>
-                    </div>
-                </div>
                 <div
-                    class="col-3 offset-4 text-bingsu-blue"
-                    style="margin: auto;"
+                    class="col-md-5 text-bingsu-blue d-sm-block d-md-none text-center"
                 >
-                    <h3 class="text-donut">Season</h3>
+                    <h3 class="text-donut">
+                        Season:
+                    </h3>
                     <h1 class="text-head-donut">July 2021</h1>
-                    <h3 class="text-donut">Users</h3>
+                    <h3 class="text-donut">Users:</h3>
                     <h1 class="text-head-donut">2,498</h1>
+					<h3 class="text-donut">Total CO<sub>2</sub>:</h3>
+                    <h1 class="text-head-donut">{{totalCO2}} kg</h1>
                     <h6>Look at weekly reports:</h6>
-                    <div class="mt-4">
+                    <div>
                         <NuxtLink to="/grab_page">
                             <img
                                 class="application"
@@ -47,7 +26,7 @@
 
                         <NuxtLink to="/foodpanda_page">
                             <img
-                                class="mx-4 application"
+                                class="m-2 application"
                                 src="/logo/food_panda.png"
                                 width="80"
                                 alt=""
@@ -63,55 +42,96 @@
                             />
                         </NuxtLink>
                     </div>
-
+                </div>
+                <div class="col-12 col-md-7 mt-4 mt-md-0 postion-relative">
+                    <doughnut-elem
+                        class="postion-absolute"
+                        style="z-index: 2; width: 100%; height: 100%;"
+                        :labels="dataDonut.labels"
+                        :data="dataDonut.data"
+                        :backgroundColor="dataDonut.backgroundColor"
+                        :unit="dataDonut.unit"
+                        :text="dataDonut.text"
+                    ></doughnut-elem>
+                </div>
+                <div
+                    class="col-md-5 text-bingsu-blue d-none d-md-block"
+                    style="height: 600px;"
+                >
+                    <h3 class="text-donut">
+                        Season
+                    </h3>
+                    <h1 class="text-head-donut">July 2021</h1>
+                    <h3 class="text-donut">Users:</h3>
+                    <h1 class="text-head-donut">2,498</h1>
+					<h3 class="text-donut">Total CO<sub>2</sub>:</h3>
+                    <h1 class="text-head-donut">{{totalCO2}} kg</h1>
+                    <h6>Look at weekly reports:</h6>
                     <div>
-                        <b-modal
-                            id="modal-center"
-                            centered
-                            :title="modalTitle + ' CO2 Emission'"
-                        >
-                            <p class="my-4">{{ modalCO2 }} kg of carbon</p>
-                        </b-modal>
+                        <NuxtLink to="/grab_page">
+                            <img
+                                class="application"
+                                src="/logo/grab.jpg"
+                                width="80"
+                                alt=""
+                            />
+                        </NuxtLink>
+
+                        <NuxtLink to="/foodpanda_page">
+                            <img
+                                class="m-2 application"
+                                src="/logo/food_panda.png"
+                                width="80"
+                                alt=""
+                            />
+                        </NuxtLink>
+
+                        <NuxtLink to="/robinhood_page">
+                            <img
+                                class="application"
+                                src="/logo/Robinhood-APK-MOD-Download-1.8.0.png"
+                                width="80"
+                                alt=""
+                            />
+                        </NuxtLink>
                     </div>
                 </div>
             </div>
 
             <div class="row mt-4">
-                <div class="col-3 offset-2 my-auto text-bingsu-blue">
-                    <h3 class="text-donut">Trees Planted</h3>
+				<div class="col-12 my-auto text-bingsu-blue d-sm-block d-md-none text-center">
+                    <h3 class="text-donut" style="padding-top: 100px">Trees Planted</h3>
+                    <h1 class="text-head-donut">{{ trees }}</h1>
+                    <h3 class="text-donut">Carbon Emission Offset*</h3>
+                    <h1 class="text-head-donut">3000 kg</h1>
+                    <h6>*When fully grown (in one year)</h6>
+                </div>
+                <div class="col-3 offset-2 my-auto text-bingsu-blue d-none d-md-block" style="height: 600px;">
+                    <h3 class="text-donut" style="padding-top: 100px">Trees Planted</h3>
                     <h1 class="text-head-donut">{{ trees }}</h1>
                     <h3 class="text-donut">Carbon Emission Offset*</h3>
                     <h1 class="text-head-donut">3000 Kg</h1>
                     <h6>*When fully grown (in one year)</h6>
                 </div>
-                <div class="col-6">
-                    <vc-donut
-                        background="#a9d0e1"
-                        :size="600"
-                        unit="px"
-                        :thickness="45"
-                        :has-legend="false"
-                        legend-placement="top"
-                        :sections="sections2"
-                        :total="100"
-                        :start-angle="0"
-                        :auto-adjust-text-size="false"
-                        class="text-bingsu-blue"
-                    >
-                        <h5 class="text-donut">Trees planted</h5>
-                        <h1 class="text-head-donut">
-                            {{ sections2[0].value }}%
-                        </h1>
-                    </vc-donut>
+                <div class="col-12 col-md-7 mt-4 mt-md-0 postion-relative">
+					<doughnut-elem
+                        class="postion-absolute"
+                        style="z-index: 2; width: 100%; height: 100%;"
+                        :labels="dataDonut2.labels"
+                        :data="dataDonut2.data"
+                        :backgroundColor="dataDonut2.backgroundColor"
+                        :unit="dataDonut2.unit"
+                        :text="dataDonut2.text"
+                    ></doughnut-elem>
                 </div>
             </div>
 
             <div style="height: 25vh;"></div>
             <div class="row">
-                <div class="col-5 offset-1">
+                <div class="col-lg-5 offset-lg-1">
                     <carousel-slider></carousel-slider>
                 </div>
-                <div class="col-4 text-bingsu-blue">
+                <div class="col-lg-4 text-bingsu-blue ml-lg-4">
                     <h2 style="font-size: 3.5rem; margin-bottom: 20px;">
                         Help us regrow the forest to offset your carbon
                         footprint!
@@ -122,37 +142,50 @@
                 </div>
             </div>
 
-            <div style="height: 20vh;"></div>
+            <!-- <div style="height: 20vh;"></div> -->
 
             <footer-phone></footer-phone>
         </div>
     </div>
 </template>
 <script>
-import Donut from "vue-css-donut-chart";
-import "vue-css-donut-chart/dist/vcdonut.css";
-import Vue from "vue";
 import "~/assets/css/index.css";
 import FooterPhone from "~/components/footer_phone.vue";
 import CarouselSlider from "~/components/carousel_slider.vue";
 import DonateBtn from "~/components/donate_button.vue"; // The donate button
-
-Vue.use(Donut);
+import DoughnutElem from "~/components/doughnut_elem.vue";
 
 export default {
     components: {
         FooterPhone,
         CarouselSlider,
-        DonateBtn
+        DonateBtn,
+        DoughnutElem
     },
     layout: "main",
     data() {
         return {
-            sections: [
-                { label: "Robinhood", value: 35, color: "#6C358E" },
-                { label: "Foodpanda", value: 30, color: "#d70365" },
-                { label: "Grab", value: 35, color: "#44cf5f" }
-            ],
+            dataDonut: {
+                labels: ["Robinhood", "Foodpanda", "Grab"],
+                data: [250, 240, 250],
+                backgroundColor: [
+                    "rgba(108, 53, 142, 1)",
+                    "rgba(215, 3, 101, 1)",
+                    "rgba(68, 207, 95, 1)"
+                ],
+                unit: "kg of Carbon",
+                text: "Carbon Emissions"
+            },
+			dataDonut2: {
+                labels: ["Carbon adsorption", "Carbon left"],
+                data: [250, 500],
+                backgroundColor: [
+                    'rgba(86, 215, 148, 1)',
+					'rgba(0,0,0,0.1)'
+                ],
+                unit: "kg of Carbon",
+                text: "Trees planted"
+            },
             sections2: [
                 { label: "Trees section", value: 32, color: "#56d794" }
             ],

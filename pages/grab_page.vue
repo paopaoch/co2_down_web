@@ -2,7 +2,7 @@
     <div class="bg-gradient-cartree">
         <div class="container mt-3">
             <div class="row">
-                <div class="col-1 pr-0 mr-4">
+                <div class="col-12 col-lg-1 pr-0 mr-4">
                     <img
                         class="rounded-circle"
                         src="/logo/grab.jpg"
@@ -10,12 +10,14 @@
                         alt=""
                     />
                 </div>
-                <div class="col-8 pl-0 d-flex align-items-center">
+                <div
+                    class="col-12 col-lg-10 ml-3 ml-lg-0 pl-0 d-flex align-items-center"
+                >
                     <h1 class="text-bingsu-blue">Grab Holdings Inc.</h1>
                 </div>
             </div>
             <div class="row mt-3">
-                <div class="col-6">
+                <div class="col-12 col-lg-6">
                     <div
                         class="card"
                         style="width: 100%; border-radius: 20px; background-color: rgba(0, 0, 0, 0.1);"
@@ -32,25 +34,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6 m-auto">
-                    <div>
-                        <vc-donut
-                            background="#c7e5e9"
-                            :size="400"
-                            unit="px"
-                            :thickness="40"
-                            :has-legend="false"
-                            legend-placement="top"
-                            :sections="sections"
-                            :total="100"
-                            :start-angle="0"
-                            :auto-adjust-text-size="false"
-                            class="text-bingsu-blue"
-                        >
-                            <h5 class="text-donut">CO<sub>2</sub> Emission</h5>
-                            <h2 class="text-head-donut">35%</h2>
-                        </vc-donut>
-                    </div>
+                <div class="col-12 col-lg-6 mt-4 mt-lg-0 postion-relative">
+                    <doughnut-elem
+                        class="postion-absolute"
+                        style="z-index: 2; width: 100%; height: 100%;"
+                        :labels="dataDonut.labels"
+                        :data="dataDonut.data"
+                        :backgroundColor="dataDonut.backgroundColor"
+                        :unit="dataDonut.unit"
+                        :text="dataDonut.text"
+                    ></doughnut-elem>
                 </div>
             </div>
 
@@ -153,6 +146,7 @@ import "~/assets/css/app_page.css";
 import "~/assets/css/index.css";
 
 import RankingElem from "~/components/ranking_elem.vue";
+import DoughnutElem from "~/components/doughnut_elem.vue";
 
 import Donut from "vue-css-donut-chart";
 import "vue-css-donut-chart/dist/vcdonut.css";
@@ -162,11 +156,18 @@ Vue.use(Donut);
 export default {
     layout: "main",
     components: {
-        RankingElem
+        RankingElem,
+		DoughnutElem
     },
     data() {
         return {
-            sections: [{ label: "Grab", value: 35, color: "#44cf5f" }],
+			dataDonut: {
+                labels: ["Grab", "Others"],
+                data: [250, 540],
+                backgroundColor: ["rgba(68, 207, 95, 1)", "rgba(0, 0, 0, 0.1)"],
+                unit: "kg of Carbon",
+                text: "Carbon Emissions"
+            },
             data: {
                 labels: [
                     "Monday",

@@ -5,7 +5,7 @@
                 <div class="col-12 col-lg-1 pr-0 mr-4">
                     <img
                         class="rounded-circle"
-                        src="/logo/grab.jpg"
+                        src="/logo/Robinhood-APK-MOD-Download-1.8.0.png"
                         width="70"
                         alt=""
                     />
@@ -13,7 +13,7 @@
                 <div
                     class="col-12 col-lg-10 ml-3 ml-lg-0 pl-0 d-flex align-items-center"
                 >
-                    <h1 class="text-bingsu-blue">Grab Holdings Inc.</h1>
+                    <h1 class="text-bingsu-blue">Robinhood</h1>
                 </div>
             </div>
             <div class="row mt-3">
@@ -23,7 +23,7 @@
                         style="width: 100%; border-radius: 20px; background-color: rgba(0, 0, 0, 0.1);"
                     >
                         <div class="card-body">
-                            <h3 class="text-white">Grab Summary</h3>
+                            <h3 class="text-white">Robinhood Summary</h3>
                             <div class="text-white mb-4">
                                 Mon 2 - Sun 8 August 2021
                             </div>
@@ -38,11 +38,16 @@
                     <doughnut-elem
                         class="postion-absolute"
                         style="z-index: 2; width: 100%; height: 100%;"
+                        :labels="dataDonut.labels"
+                        :data="dataDonut.data"
+                        :backgroundColor="dataDonut.backgroundColor"
+                        :unit="dataDonut.unit"
+                        :text="dataDonut.text"
                     ></doughnut-elem>
                 </div>
             </div>
 
-            <div class="row" style="height:30px"></div>
+            <!-- <div class="row" style="height:10vh"></div> -->
         </div>
     </div>
 </template>
@@ -53,15 +58,22 @@ import "~/assets/css/index.css";
 import RankingElem from "~/components/ranking_elem.vue";
 import DoughnutElem from "~/components/doughnut_elem.vue";
 
-
 export default {
     layout: "main",
     components: {
         RankingElem,
-		DoughnutElem
+        DoughnutElem
     },
     data() {
         return {
+            dataDonut: {
+                labels: ["Robinhood", "Others"],
+                data: [250, 540],
+                backgroundColor: ["rgba(108, 53, 142, 1)", "rgba(0, 0, 0, 0.1)"],
+                unit: "kg of Carbon",
+                text: "Carbon Emissions"
+            },
+
             data: {
                 labels: [
                     "Monday",
@@ -115,7 +127,6 @@ export default {
                     display: false
                 }
             }
-            
         };
     }
 };

@@ -102,22 +102,21 @@ Chart.pluginService.register({
 });
 
 export default {
+	props: ['labels','unit','data','backgroundColor','text'],
 	components: {
 		DoughnutBingsu
 	},
     data() {
         return {
             dataDonut: {
-                labels: ["Grab", "Others"],
+                labels: this.labels,
                 datasets: [
                     {
-                        label: "kg of Carbon",
-                        data: [250, 540],
-                        backgroundColor: [
-                            "rgba(68, 207, 95, 1)",
-                            "rgba(0, 0, 0, 0.1)"
-                        ],
-                        borderWidth: 0
+                        label: this.unit,
+                        data: this.data,
+                        backgroundColor: this.backgroundColor,
+                        borderWidth: 0.15,
+						borderColor: 'rgba(0,0,0,0.8)'
                     }
                 ]
             },
@@ -132,11 +131,11 @@ export default {
                 },
                 elements: {
                     center: {
-                        text: "Carbon Emissions",
+                        text: this.text,
                         color: "#138E9F", // Default is #000000
                         fontStyle: "Arial", // Default is Arial
                         sidePadding: 20, // Default is 20 (as a percentage)
-                        minFontSize: 50, // Default is 20 (in px), set to false and text will not wrap.
+                        minFontSize: false, // Default is 20 (in px), set to false and text will not wrap.
                         lineHeight: 45 // Default is 25 (in px), used for when text wraps
                     }
                 }
