@@ -93,7 +93,7 @@
                 </div>
                 <div class="col-lg-4 d-flex justify-content-center">
                     <team-card
-                        img="/members/egai.jpg"
+                        img="/members/egai2.jpg"
                         name="Nicharee (Yumiko) Suwannaroj"
                         role="Front-end App Developer"
                     ></team-card>
@@ -133,7 +133,7 @@
                 </div>
                 <div class="col-6 d-flex justify-content-center">
                     <team-card
-                        img="/members/egai.jpg"
+                        img="/members/egai2.jpg"
                         name="Nicharee (Yumiko) Suwannaroj"
                         role="Front-end App Developer"
                     ></team-card>
@@ -178,7 +178,7 @@
 			<div class="row d-sm-flex d-md-none mb-4">
                 <div class="col-12 d-flex justify-content-center">
                     <team-card
-                        img="/members/egai.jpg"
+                        img="/members/egai2.jpg"
                         name="Nicharee (Yumiko) Suwannaroj"
                         role="Front-end App Developer"
                     ></team-card>
