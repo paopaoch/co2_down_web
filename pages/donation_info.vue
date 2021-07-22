@@ -9,20 +9,27 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-7 col-md-12 mt-2">
+                        <div class="col-lg-11 col-md-12 mt-2">
                             <p>
-                                some description how trees can help, how many
-                                tress needed to be plant, 2030 goal, how easy
-                                and sustainable users can be bla bla..... ...
-                                ...
+                                Trees can offset Carbon Emissions by absorbing
+                                it and produce Oxygen in return. Trees also
+                                contribute to lowering the global temperature,
+                                which is one of our urgent climate challenges.
+                                In a year, a fully grown tree can absorb around
+                                9-15 Kg of Carbon Dioxide. We aim to reduce and
+                                offset the Carbon emission per capita, which in
+                                2020 was 3.68 Tons. To offset that amount we
+                                need 307 trees per person in Thailand each year.
+                                Donate to our Tree Planting project to make this
+                                goal a reality.
                             </p>
                         </div>
                     </div>
                     <div class="row mt-2">
                         <div class="col-4">
-                            <a href="/donation_transaction"
+                            <NuxtLink to="/donation_transaction"
                                 ><donate-btn></donate-btn>
-                            </a>
+                            </NuxtLink>
                         </div>
                     </div>
                 </div>

@@ -1,11 +1,11 @@
 <template>
-    <div class="bg-gradient">
+    <div class="bg-gradient" style="padding-top: 100px;">
         <div class="container">
-            <div class="row mb-4">
+			<div class="row mb-4">
                 <div class="col-12 col-md-4 offset-md-4 text-center">
-                    <h1 class="text-espresso-blue">Our Mission</h1>
+                    <h1 class="text-bingsu-blue">About us</h1>
                     <hr
-                        class="mt-1 bg-espresso-blue"
+                        class="mt-1 bg-bingsu-blue"
                         width="200px"
                         style="margin: auto; height: 0.5px"
                     />
@@ -17,59 +17,114 @@
                         class="card"
                         style="width: 100%; border-radius: 20px; background-color: rgba(0, 0, 0, 0.1);"
                     >
-                        <div class="card-body text-white">
-                            <p>
-                                Amidst the growing concerns and risks associated
-                                with climate change, Collective Climate Action
-                                has become a priority as illustrated through
-                                Thailand’s goal to reduce greenhouse gas (GHG)
-                                emissions by 20% by 2030. Nonetheless, the
-                                majority of Thai society lack the knowledge and
-                                incentive to reduce their carbon footprint.
-                            </p>
-                            <p>
-                                Perpetuated by COVID-19 and consequent WFH
-                                practices, this influenced consumption habits
-                                resulting in more frequent yet inefficient
-                                online food orders. With the transport sector
-                                being one of the top contributors to the
-                                sustained increased in carbon emissions and
-                                energy consumption in the country, the lack of
-                                societal awareness and the transportation’s
-                                rising contribution to carbon emissions
-                                emphasize how these two factors should be
-                                addressed as a way to combat climate change.
-                            </p>
-                            <p>
-                                Studies highlighted that without structural and
-                                technological innovations, further GHG emission
-                                reduction targets would merely create greater
-                                challenges to Thailand’s energy and economic
-                                systems, and ultimately lead to greater GDP and
-                                welfare losses. In the face of globalization, it
-                                is crucial to address this problem before the
-                                consequences offset the potential for future
-                                economic development and individuals’
-                                well-being.
-                            </p>
-                            <p>
-                                CO<sub>2</sub>l Down would like to see a world
-                                where nature and modern technology live together
-                                in harmony, where everyone is aware of their
-                                carbon foot print and colaborate in improving
-                                the world one small bit at a time.
-                            </p>
-                            <h6>
-                                Lets cool down the earth in a cool way with
-                                CO<sub>2</sub>l Down!
-                            </h6>
-                            <p class="text-light my-4">
-                                - The team at CO<sub>2</sub>l Down
+                        <div class="card-body">
+                            <p class="text-white">
+                                CO2L Down is an app that provides innovative
+                                insights on food delivery carbon footprints
+                                through the use of gamification. Cool down is an
+                                innovative gamified solution (to track your food
+                                delivery emission/that provides insights on food
+                                delivery carbon footprints), compete in our
+                                monthly leaderboard to win Carbon Coins, redeem
+                                discounts, and donate to contribute to our
+                                carbon offset goals.
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="row mb-4">
+                <div class="col-12 col-md-4 offset-md-4 text-center">
+                    <h1 class="text-bingsu-blue">Our story</h1>
+                    <hr
+                        class="mt-1 bg-bingsu-blue"
+                        width="200px"
+                        style="margin: auto; height: 0.5px"
+                    />
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div
+                        class="card"
+                        style="width: 100%; border-radius: 20px; background-color: rgba(0, 0, 0, 0.1);"
+                    >
+                        <div class="card-body">
+                            <p class="text-white">
+                                With Thailand’s goal to reduce greenhouse gas
+                                emissions by 20% by 2030, it is alarming how the
+                                majority of society lack the knowledge and
+                                incentive to play a role in the Collective
+                                Climate Action. As Thailand is the second
+                                largest food delivery market (behind Indonesia),
+                                our culture and the effect of Covid-19 has made
+                                food delivery a big source of the country’s
+                                carbon emissions. In the face of globalization,
+                                (+nations are racing to achieve net zero
+                                emission,) it is crucial to address this problem
+                                before the consequences offset the potential for
+                                future economic development and individuals’
+                                well-being. This therefore led to the creation
+                                of CO2L Down which utilizes carbon tracking app
+                                to calculate and allocate points for the users
+                                based on the efficiency of their food order.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row mb-4">
+                <div class="col-12 col-md-4 offset-md-4 text-center">
+                    <h1 class="text-bingsu-blue">Our Mission</h1>
+                    <hr
+                        class="mt-1 bg-bingsu-blue"
+                        width="200px"
+                        style="margin: auto; height: 0.5px"
+                    />
+                </div>
+            </div>
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div
+                        class="card"
+                        style="width: 100%; border-radius: 20px; background-color: rgba(0, 0, 0, 0.1);"
+                    >
+                        <div class="card-body">
+                            <p class="text-white">
+                                In the form of a leaderboard, our gamified app
+                                ensures everyone can participate in the
+                                competition to become the most carbon efficient
+                                user. Additionally, with an option to donate
+                                money to fund our tree-planting projects in
+                                exchange for rewards, we strive to educate users
+                                on the impact of high carbon emissions and how
+                                they can reduce their contribution in a
+                                convenient and engaging way.
+                            </p>
+                            <p class="text-white">
+                                If you would like to see a world where nature
+                                and technology live together in harmony, where a
+                                sustainable lifestyle is the new way to go, and
+                                where everyone works together to improve our
+                                world one step at a time, what are you waiting
+                                for?
+                            </p>
+							<br>
+                            <h5 class="text-white text-center">
+                                "Lets cool down the earth in a cool way with
+                                CO<sub>2</sub>l Down"
+                            </h5>
+                            <p class="text-muted font-italic text-center mb-4 mt-3">
+                                - The Bingsu team at CO<sub>2</sub>l Down
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row my-4">
                 <div
                     class="col-12 col-md-4 offset-md-4 text-center"
@@ -175,7 +230,7 @@
                 </div>
             </div>
 
-			<div class="row d-sm-flex d-md-none mb-4">
+            <div class="row d-sm-flex d-md-none mb-4">
                 <div class="col-12 d-flex justify-content-center">
                     <team-card
                         img="/members/egai2.jpg"
@@ -185,7 +240,7 @@
                 </div>
             </div>
 
-			<div class="row d-sm-flex d-md-none mb-4">
+            <div class="row d-sm-flex d-md-none mb-4">
                 <div class="col-12 d-flex justify-content-center">
                     <team-card
                         img="/members/chap.jpg"
@@ -195,7 +250,7 @@
                 </div>
             </div>
 
-			<div class="row d-sm-flex d-md-none mb-4">
+            <div class="row d-sm-flex d-md-none mb-4">
                 <div class="col-12 d-flex justify-content-center">
                     <team-card
                         img="/members/grace.jfif"
@@ -205,7 +260,7 @@
                 </div>
             </div>
 
-			<div class="row d-sm-flex d-md-none">
+            <div class="row d-sm-flex d-md-none">
                 <div class="col-12 d-flex justify-content-center">
                     <team-card
                         img="/members/mim.jpg"
@@ -214,7 +269,7 @@
                     ></team-card>
                 </div>
             </div>
-            
+
             <footer-phone style="margin-top: 200px"></footer-phone>
         </div>
     </div>

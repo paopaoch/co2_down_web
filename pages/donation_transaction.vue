@@ -10,7 +10,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-lg-7 col-md-12 mt-2 ml-4">
+                        <div class="col-lg-10 col-md-12 mt-2 ml-4">
                             <p>
                                 Choose the tree you would like to donate. To
                                 gain the most from your donation download our

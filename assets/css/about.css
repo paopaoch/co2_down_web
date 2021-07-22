@@ -5,3 +5,20 @@
 .text-espresso-blue {
 	color: #11253e;
 }
+
+p {
+	font-size: 1.18rem;
+}
+
+.text-bingsu-light {
+    color: #68aa6e !important;
+}
+
+.text-bingsu-blue {
+	color: #137785
+}
+
+.bg-bingsu-blue {
+	background-color: #137785
+}
+
