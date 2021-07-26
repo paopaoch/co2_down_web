@@ -23,7 +23,7 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col-12 d-flex align-items-center">
-                            <NuxtLink to="/donation_transaction"
+                            <NuxtLink to="/donation_success"
                                 ><donate-btn></donate-btn> </NuxtLink
                             ><NuxtLink class="a-link ml-4 mb-1" to="/donation_info"
                                 >Learn More

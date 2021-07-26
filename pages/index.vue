@@ -9,13 +9,16 @@
                         href="#"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="button--grey"
+                        class="button--grey mt-2 ml-0"
                     >
                         Get the application
                     </a>
-                    <a href="/home" class="button--grey">
+                    <a href="/home" class="button--grey mt-2 ml-0">
                         Continue to Home
                     </a>
+					<div class="mt-2">
+						<img src="/power_aws.png" width="100" alt="">
+					</div>
                 </div>
             </div>
         </div>

@@ -88,7 +88,7 @@
 
                         <b-navbar-nav class="ml-auto">
                             <button
-                                class="btn btn-outline-success my-2 my-sm-0"
+                                class="btn btn-outline-warning my-2 my-sm-0"
                                 type="submit"
                             >
                                 Get CO<sub>2</sub>l Down App

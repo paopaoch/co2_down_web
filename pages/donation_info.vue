@@ -27,7 +27,7 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col-4">
-                            <NuxtLink to="/donation_transaction"
+                            <NuxtLink to="/donation_success"
                                 ><donate-btn></donate-btn>
                             </NuxtLink>
                         </div>

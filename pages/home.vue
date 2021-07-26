@@ -136,7 +136,7 @@
                         Help us regrow the forest to offset your carbon
                         footprint!
                     </h2>
-                    <a href="/donation_transaction"
+                    <a href="/donation_success"
                         ><donate-btn class="mt-4"></donate-btn
                     ></a>
                 </div>
