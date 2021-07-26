@@ -10,9 +10,11 @@
                     </h3>
                     <h1 class="text-head-donut">July 2021</h1>
                     <h3 class="text-donut">Users:</h3>
-                    <h1 class="text-head-donut">2,498</h1>
-					<h3 class="text-donut">Total CO<sub>2</sub>:</h3>
-                    <h1 class="text-head-donut">{{totalCO2}} kg</h1>
+                    <h1 class="text-head-donut">{{ user_number }}</h1>
+                    <h3 class="text-donut">Total CO<sub>2</sub>:</h3>
+                    <h1 class="text-head-donut">
+                        {{ total_co2.toFixed(2) }} g
+                    </h1>
                     <h6>Look at weekly reports:</h6>
                     <div>
                         <NuxtLink to="/grab_page">
@@ -63,9 +65,11 @@
                     </h3>
                     <h1 class="text-head-donut">July 2021</h1>
                     <h3 class="text-donut">Users:</h3>
-                    <h1 class="text-head-donut">2,498</h1>
-					<h3 class="text-donut">Total CO<sub>2</sub>:</h3>
-                    <h1 class="text-head-donut">{{totalCO2}} kg</h1>
+                    <h1 class="text-head-donut">{{ user_number }}</h1>
+                    <h3 class="text-donut">Total CO<sub>2</sub>:</h3>
+                    <h1 class="text-head-donut">
+                        {{ total_co2.toFixed(2) }} g
+                    </h1>
                     <h6>Look at weekly reports:</h6>
                     <div>
                         <NuxtLink to="/grab_page">
@@ -99,22 +103,39 @@
             </div>
 
             <div class="row mt-4">
-				<div class="col-12 my-auto text-bingsu-blue d-sm-block d-md-none text-center">
-                    <h3 class="text-donut" style="padding-top: 100px">Trees Planted</h3>
-                    <h1 class="text-head-donut">{{ trees }}</h1>
+                <div
+                    class="col-12 my-auto text-bingsu-blue d-sm-block d-md-none text-center"
+                >
+                    <h3 class="text-donut" style="padding-top: 100px">
+                        Trees Planted
+                    </h3>
+                    <h1 class="text-head-donut">
+                        {{ parseInt(tree_no.total_amount_tree) }}
+                    </h1>
                     <h3 class="text-donut">Carbon Emission Offset*</h3>
-                    <h1 class="text-head-donut">3000 kg</h1>
+                    <h1 class="text-head-donut">
+                        {{ tree_no.total_co2_offset_amount.toFixed(2) }} g
+                    </h1>
                     <h6>*When fully grown (in one year)</h6>
                 </div>
-                <div class="col-3 offset-2 my-auto text-bingsu-blue d-none d-md-block" style="height: 600px;">
-                    <h3 class="text-donut" style="padding-top: 100px">Trees Planted</h3>
-                    <h1 class="text-head-donut">{{ trees }}</h1>
+                <div
+                    class="col-3 offset-2 my-auto text-bingsu-blue d-none d-md-block"
+                    style="height: 600px;"
+                >
+                    <h3 class="text-donut" style="padding-top: 100px">
+                        Trees Planted
+                    </h3>
+                    <h1 class="text-head-donut">
+                        {{ parseInt(tree_no.total_amount_tree) }}
+                    </h1>
                     <h3 class="text-donut">Carbon Emission Offset*</h3>
-                    <h1 class="text-head-donut">3000 Kg</h1>
+                    <h1 class="text-head-donut">
+                        {{ tree_no.total_co2_offset_amount.toFixed(2) }} g
+                    </h1>
                     <h6>*When fully grown (in one year)</h6>
                 </div>
                 <div class="col-12 col-md-7 mt-4 mt-md-0 postion-relative">
-					<doughnut-elem
+                    <doughnut-elem
                         class="postion-absolute"
                         style="z-index: 2; width: 100%; height: 100%;"
                         :labels="dataDonut2.labels"
@@ -154,8 +175,111 @@ import FooterPhone from "~/components/footer_phone.vue";
 import CarouselSlider from "~/components/carousel_slider.vue";
 import DonateBtn from "~/components/donate_button.vue"; // The donate button
 import DoughnutElem from "~/components/doughnut_elem.vue";
+import axios from "axios";
 
 export default {
+    async asyncData() {
+        // API for trees
+        const tree = await axios.post(
+            "https://isvonshaljavzm4qc3g3xmwepm.appsync-api.ap-southeast-1.amazonaws.com/graphql",
+            {
+                query: `query MyQuery {
+							getTotalSum {
+								status
+								total_amount_tree
+								total_co2_offset_amount
+							}
+						}`
+            },
+            {
+                headers: {
+                    "x-api-key": process.env.API_KEY
+                }
+            }
+        );
+        // console.log(tree.data.data.getTotalSum)
+        const tree_no = tree.data.data.getTotalSum;
+
+        // API for carbon
+        const carbon = await axios.post(
+            "https://isvonshaljavzm4qc3g3xmwepm.appsync-api.ap-southeast-1.amazonaws.com/graphql",
+            {
+                query: `query MyQuery {
+							getTotalCarbonSum {
+								status
+								data {
+								foodpanda
+								grab
+								robinhood
+								}
+							}
+						}`
+            },
+            {
+                headers: {
+                    "x-api-key": process.env.API_KEY
+                }
+            }
+        );
+        // console.log(carbon.data.data.getTotalCarbonSum.data);
+        const total_co2 =
+            carbon.data.data.getTotalCarbonSum.data.foodpanda +
+            carbon.data.data.getTotalCarbonSum.data.grab +
+            carbon.data.data.getTotalCarbonSum.data.robinhood;
+
+        const count = await axios.post(
+            "https://isvonshaljavzm4qc3g3xmwepm.appsync-api.ap-southeast-1.amazonaws.com/graphql",
+            {
+                query: `query MyQuery {
+							getCountUser {
+								status
+								user_number
+							}
+						}`
+            },
+            {
+                headers: {
+                    "x-api-key": process.env.API_KEY
+                }
+            }
+        );
+        const user_number = count.data.data.getCountUser.user_number;
+        return {
+            user_number,
+            tree_no,
+            total_co2,
+            dataDonut2: {
+                labels: ["Carbon adsorption", "Carbon left"],
+                data: [
+                    tree_no.total_co2_offset_amount.toFixed(4),
+                    (total_co2 - tree_no.total_co2_offset_amount).toFixed(4)
+                ],
+                backgroundColor: ["rgba(86, 215, 148, 1)", "rgba(0,0,0,0.1)"],
+                unit: "kg of Carbon",
+                text: "Trees planted"
+            },
+            dataDonut: {
+                labels: ["Robinhood", "Foodpanda", "Grab"],
+                data: [
+                    carbon.data.data.getTotalCarbonSum.data.robinhood.toFixed(
+                        4
+                    ),
+                    carbon.data.data.getTotalCarbonSum.data.foodpanda.toFixed(
+                        4
+                    ),
+                    carbon.data.data.getTotalCarbonSum.data.grab.toFixed(4)
+                ],
+                backgroundColor: [
+                    "rgba(108, 53, 142, 1)",
+                    "rgba(215, 3, 101, 1)",
+                    "rgba(68, 207, 95, 1)"
+                ],
+                unit: "kg of Carbon",
+                text: "Carbon Emissions"
+            }
+        };
+    },
+
     components: {
         FooterPhone,
         CarouselSlider,
@@ -164,48 +288,7 @@ export default {
     },
     layout: "main",
     data() {
-        return {
-            dataDonut: {
-                labels: ["Robinhood", "Foodpanda", "Grab"],
-                data: [250, 240, 250],
-                backgroundColor: [
-                    "rgba(108, 53, 142, 1)",
-                    "rgba(215, 3, 101, 1)",
-                    "rgba(68, 207, 95, 1)"
-                ],
-                unit: "kg of Carbon",
-                text: "Carbon Emissions"
-            },
-			dataDonut2: {
-                labels: ["Carbon adsorption", "Carbon left"],
-                data: [250, 500],
-                backgroundColor: [
-                    'rgba(86, 215, 148, 1)',
-					'rgba(0,0,0,0.1)'
-                ],
-                unit: "kg of Carbon",
-                text: "Trees planted"
-            },
-            sections2: [
-                { label: "Trees section", value: 32, color: "#56d794" }
-            ],
-            trees: 2498,
-            totalCO2: 7809,
-            modalTitle: "",
-            modalCO2: ""
-        };
-    },
-    methods: {
-        handleSectionHover(section, event) {
-            this.modalTitle = section.label;
-            const indexFound = this.sections.findIndex(item => {
-                return item.label == section.label;
-            });
-            this.modalCO2 =
-                (this.totalCO2 * this.sections[indexFound].value) / 100;
-            this.modalCO2 = parseInt(this.modalCO2);
-            console.log(this.modalCO2);
-        }
+        return {};
     }
 };
 </script>

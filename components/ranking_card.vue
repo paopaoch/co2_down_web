@@ -12,31 +12,31 @@
                 </div>
                 <div class="row text-white">
                     <div class="col-lg-4 col-md-6 col-sm-12">
-						<ranking-elem rank="1" name="Sakupao" points="4202"></ranking-elem>
+						<ranking-elem rank="1" :name="ranks[0].name" :points="ranks[0].points"></ranking-elem>
 					</div>
 					<div class="col-lg-4 col-md-6 col-sm-12">
-						<ranking-elem rank="2" name="Grace_a" points="4110" variant="primary"></ranking-elem>
+						<ranking-elem rank="2" :name="ranks[1].name" :points="ranks[1].points" variant="primary"></ranking-elem>
 					</div>
 					<div class="col-lg-4 col-md-6 col-sm-12">
-						<ranking-elem rank="3" name="yumi-mosa" points="4105" variant="danger"></ranking-elem>
+						<ranking-elem rank="3" :name="ranks[2].name" :points="ranks[2].points" variant="danger"></ranking-elem>
 					</div>
 					<div class="col-lg-4 col-md-6 col-sm-12">
-						<ranking-elem rank="4" name="DelG" points="4026" variant="warning"></ranking-elem>
+						<ranking-elem rank="4" :name="ranks[3].name" :points="ranks[3].points" variant="warning"></ranking-elem>
 					</div>
 					<div class="col-lg-4 col-md-6 col-sm-12">
-						<ranking-elem rank="5" name="MimImiM" points="3500" variant="success"></ranking-elem>
+						<ranking-elem rank="5" :name="ranks[4].name" :points="ranks[4].points" variant="success"></ranking-elem>
 					</div>
 					<div class="col-lg-4 col-md-6 col-sm-12">
-						<ranking-elem rank="6" name="mosa-yumi" points="3456" variant="primary"></ranking-elem>
+						<ranking-elem rank="6" :name="ranks[5].name" :points="ranks[5].points" variant="primary"></ranking-elem>
 					</div>
 					<div class="col-lg-4 col-md-6 col-sm-12">
-						<ranking-elem rank="7" name="Sakupao2" points="3234" variant="info"></ranking-elem>
+						<ranking-elem rank="7" :name="ranks[6].name" :points="ranks[6].points" variant="info"></ranking-elem>
 					</div>
 					<div class="col-lg-4 col-md-6 col-sm-12">
-						<ranking-elem rank="8" name="ENae" points="3156"></ranking-elem>
+						<ranking-elem rank="8" :name="ranks[7].name" :points="ranks[7].points"></ranking-elem>
 					</div>
 					<div class="col-lg-4 col-md-6 col-sm-12">
-						<ranking-elem rank="9" name="GaiGinKo" points="3048" variant="warning"></ranking-elem>
+						<ranking-elem rank="9" :name="ranks[8].name" :points="ranks[8].points" variant="warning"></ranking-elem>
 					</div>
                 </div>
             </div>
@@ -47,6 +47,7 @@
 import RankingElem from "~/components/ranking_elem.vue";
 
 export default {
+	props: ['ranks'],
 	components:{
 		RankingElem
 	}	

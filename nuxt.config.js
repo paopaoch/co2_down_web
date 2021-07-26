@@ -1,4 +1,7 @@
+const env = require('dotenv').config()
+// console.log(env)
 export default {
+	env: env.parsed,
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'co2l down',

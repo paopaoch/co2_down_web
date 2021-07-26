@@ -47,9 +47,8 @@
                 </div>
             </div>
 
-			<ranking-card></ranking-card>
-			<div class="row" style="height:30px">
-			</div>
+            <ranking-card :ranks="ranks"></ranking-card>
+            <div class="row" style="height:30px"></div>
         </div>
     </div>
 </template>
@@ -57,24 +56,83 @@
 import "~/assets/css/app_page.css";
 import "~/assets/css/index.css";
 
-import RankingCard from "~/components/ranking_card.vue"
+import RankingCard from "~/components/ranking_card.vue";
 import DoughnutElem from "~/components/doughnut_elem.vue";
+import axios from "axios";
 
 export default {
+    async asyncData() {
+        // API for trees
+        const carbon = await axios.post(
+            "https://isvonshaljavzm4qc3g3xmwepm.appsync-api.ap-southeast-1.amazonaws.com/graphql",
+            {
+                query: `query MyQuery {
+							getTotalCarbonSum {
+								status
+								data {
+								foodpanda
+								grab
+								robinhood
+								}
+							}
+						}`
+            },
+            {
+                headers: {
+                    "x-api-key": process.env.API_KEY
+                }
+            }
+        );
+        const foodpanda = carbon.data.data.getTotalCarbonSum.data.foodpanda;
+        const others =
+            carbon.data.data.getTotalCarbonSum.data.grab +
+            carbon.data.data.getTotalCarbonSum.data.robinhood;
+
+        const top100Rank = await axios.post(
+            "https://isvonshaljavzm4qc3g3xmwepm.appsync-api.ap-southeast-1.amazonaws.com/graphql",
+            {
+                query: `query MyQuery {
+							getAllUserRanking(company: "foodpanda", top_100: true, user_id: "none") {
+								data {
+									username
+									foodpanda_points
+								}
+								status
+							}
+						}`
+            },
+            {
+                headers: {
+                    "x-api-key": process.env.API_KEY
+                }
+            }
+        );
+        let rankList = top100Rank.data.data.getAllUserRanking.data.slice(0, 9);
+        let ranks = [];
+        for (let i = 0; i < rankList.length; i++) {
+            ranks.push({
+                name: rankList[i].username,
+                points: rankList[i].foodpanda_points
+            })
+        }
+        return {
+			ranks,
+            dataDonut: {
+                labels: ["Foodpanda", "Others"],
+                data: [foodpanda.toFixed(4), others.toFixed(4)],
+                backgroundColor: ["rgba(215, 3, 101, 1)", "rgba(0, 0, 0, 0.1)"],
+                unit: "g of Carbon",
+                text: "Carbon Emissions"
+            }
+        };
+    },
     layout: "main",
     components: {
-		DoughnutElem,
-		RankingCard
+        DoughnutElem,
+        RankingCard
     },
     data() {
         return {
-			dataDonut: {
-                labels: ["Foodpanda", "Others"],
-                data: [250, 540],
-                backgroundColor: ["rgba(215, 3, 101, 1)", "rgba(0, 0, 0, 0.1)"],
-                unit: "kg of Carbon",
-                text: "Carbon Emissions"
-            },
             data: {
                 labels: [
                     "Monday",
@@ -87,7 +145,7 @@ export default {
                 ],
                 datasets: [
                     {
-                        label: "kg of Carbon",
+                        label: "g of Carbon",
                         data: [180, 386, 298, 112, 438, 230, 379],
                         backgroundColor: "rgba(215, 3, 101, 1)",
                         borderWidth: 0

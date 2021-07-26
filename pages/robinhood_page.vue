@@ -47,7 +47,7 @@
                 </div>
             </div>
 
-			<ranking-card></ranking-card>
+			<ranking-card :ranks="ranks"></ranking-card>
 
 			<div class="row" style="height:30px">
 			</div>
@@ -60,9 +60,73 @@ import "~/assets/css/index.css";
 
 import RankingCard from "~/components/ranking_card.vue"
 import DoughnutElem from "~/components/doughnut_elem.vue";
+import axios from "axios";
 
 
 export default {
+	async asyncData() {
+        const carbon = await axios.post(
+            "https://isvonshaljavzm4qc3g3xmwepm.appsync-api.ap-southeast-1.amazonaws.com/graphql",
+            {
+                query: `query MyQuery {
+							getTotalCarbonSum {
+								status
+								data {
+								foodpanda
+								grab
+								robinhood
+								}
+							}
+						}`
+            },
+            {
+                headers: {
+                    "x-api-key": process.env.API_KEY
+                }
+            }
+        );
+		const robinhood = carbon.data.data.getTotalCarbonSum.data.robinhood
+		const others = carbon.data.data.getTotalCarbonSum.data.grab + carbon.data.data.getTotalCarbonSum.data.foodpanda 
+		
+		const top100Rank = await axios.post(
+            "https://isvonshaljavzm4qc3g3xmwepm.appsync-api.ap-southeast-1.amazonaws.com/graphql",
+            {
+                query: `query MyQuery {
+							getAllUserRanking(company: "robinhood", top_100: true, user_id: "none") {
+								data {
+									username
+									robinhood_points
+								}
+								status
+							}
+						}`
+            },
+            {
+                headers: {
+                    "x-api-key": process.env.API_KEY
+                }
+            }
+        );
+        let rankList = top100Rank.data.data.getAllUserRanking.data.slice(0, 9);
+        let ranks = [];
+        for (let i = 0; i < rankList.length; i++) {
+            ranks.push({
+                name: rankList[i].username,
+                points: rankList[i].robinhood_points
+            })
+        }
+		
+		return {
+			ranks,
+			dataDonut: {
+                labels: ["robinhood", "Others"],
+                data: [robinhood.toFixed(4), others.toFixed(4)],
+                backgroundColor: ["rgba(108, 53, 142, 1)", "rgba(0, 0, 0, 0.1)"],
+                unit: "g of Carbon",
+                text: "Carbon Emissions"
+            }
+		}
+	},
     layout: "main",
     components: {
         RankingCard,
@@ -70,13 +134,6 @@ export default {
     },
     data() {
         return {
-            dataDonut: {
-                labels: ["Robinhood", "Others"],
-                data: [250, 540],
-                backgroundColor: ["rgba(108, 53, 142, 1)", "rgba(0, 0, 0, 0.1)"],
-                unit: "kg of Carbon",
-                text: "Carbon Emissions"
-            },
             data: {
                 labels: [
                     "Monday",
@@ -89,7 +146,7 @@ export default {
                 ],
                 datasets: [
                     {
-                        label: "kg of Carbon",
+                        label: "g of Carbon",
                         data: [180, 386, 298, 112, 438, 230, 379],
                         backgroundColor: "rgba(108, 53, 142, 1)",
                         borderWidth: 0
