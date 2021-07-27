@@ -157,9 +157,9 @@
                         Help us regrow the forest to offset your carbon
                         footprint!
                     </h2>
-                    <a href="/donation_success"
+                    <span @click="postDonation()"
                         ><donate-btn class="mt-4"></donate-btn
-                    ></a>
+                    ></span>
                 </div>
             </div>
 
@@ -289,6 +289,30 @@ export default {
     layout: "main",
     data() {
         return {};
+    },
+    methods: {
+        async postDonation() {
+            console.log("hello");
+            const donation = await axios.post(
+                "https://isvonshaljavzm4qc3g3xmwepm.appsync-api.ap-southeast-1.amazonaws.com/graphql",
+                {
+                    query: `mutation MyMutation {
+					add_donation_trans(amount_baht: 50, user_id: "anonymous") {
+					status
+					}
+				}
+				`
+                },
+                {
+                    headers: {
+                        "x-api-key": process.env.API_KEY
+                    }
+                }
+            );
+            console.log(donation.data.data);
+			// redirect('/donation_success')
+			this.$router.push("/donation_success")
+        }
     }
 };
 </script>

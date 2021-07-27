@@ -27,9 +27,9 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col-4">
-                            <NuxtLink to="/donation_success"
-                                ><donate-btn></donate-btn>
-                            </NuxtLink>
+                            <span @click="postDonation()">
+                                <donate-btn></donate-btn>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -41,12 +41,37 @@
 import "~/assets/css/donation.css";
 import DonateBtn from "~/components/donate_button.vue"; // The donate button
 import Chev from "~/components/chev.vue"; // the chev icon
+import axios from "axios";
 
 export default {
     layout: "main",
     components: {
         DonateBtn,
         Chev
+    },
+	methods: {
+        async postDonation() {
+            console.log("hello");
+            const donation = await axios.post(
+                "https://isvonshaljavzm4qc3g3xmwepm.appsync-api.ap-southeast-1.amazonaws.com/graphql",
+                {
+                    query: `mutation MyMutation {
+					add_donation_trans(amount_baht: 50, user_id: "anonymous") {
+					status
+					}
+				}
+				`
+                },
+                {
+                    headers: {
+                        "x-api-key": process.env.API_KEY
+                    }
+                }
+            );
+            console.log(donation.data.data);
+            // redirect('/donation_success')
+            this.$router.push("/donation_success");
+        }
     }
 };
 </script>

@@ -88,7 +88,7 @@
 
                         <b-navbar-nav class="ml-auto">
                             <button
-                                class="btn button--grey my-2 my-sm-0"
+                                class="btn btn-outline-light my-2 my-sm-0"
                                 type="submit"
                             >
                                 Get CO<sub>2</sub>l Down App
@@ -110,13 +110,18 @@ export default {
 </script>
 <style>
 .button--grey {
-    display: inline-block;
-    border-radius: 4px;
-	font-weight: bold;
-    border: 2px solid #306f8d !important;
-    color: #306f8d;
-    text-decoration: none;
-    /* padding: 10px 30px; */
-    /* margin-left: 15px; */
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid #137785;
+  color: #137785;
+  text-decoration: none;
+  padding: 10px 30px;
+  margin-left: 15px;
 }
+
+.button--grey:hover {
+  color: #fff;
+  background-color: #137785;
+}
+
 </style>
