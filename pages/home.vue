@@ -288,7 +288,9 @@ export default {
     },
     layout: "main",
     data() {
-        return {};
+        return {
+			user_number: ''
+		};
     },
     methods: {
         async postDonation() {

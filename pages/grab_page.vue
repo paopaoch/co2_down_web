@@ -24,9 +24,7 @@
                     >
                         <div class="card-body">
                             <h3 class="text-white">Grab Summary</h3>
-                            <div class="text-white mb-4">
-                                Mon 2 - Sun 8 August 2021
-                            </div>
+                            <date-for-card></date-for-card>
                             <bar-bingsu
                                 :chartdata="data"
                                 :options="options"
@@ -49,8 +47,7 @@
 
             <ranking-card :ranks="ranks"></ranking-card>
 
-			<div class="row" style="height:30px">
-			</div>
+            <div class="row" style="height:30px"></div>
         </div>
     </div>
 </template>
@@ -58,12 +55,39 @@
 import "~/assets/css/app_page.css";
 import "~/assets/css/index.css";
 
-import RankingCard from "~/components/ranking_card.vue"
+import RankingCard from "~/components/ranking_card.vue";
 import DoughnutElem from "~/components/doughnut_elem.vue";
+import DateForCard from "~/components/date_for_card.vue"
 import axios from "axios";
 
+const today = new Date();
+const yesterday = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate() - 1
+);
+const lastWeek = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate() - 7
+);
+const monthOfYear = [
+    "JAN",
+    "FEB",
+    "MAR",
+    "APR",
+    "MAY",
+    "JUN",
+    "JUL",
+    "AUG",
+    "SEP",
+    "OCT",
+    "NOV",
+    "DEC"
+];
+
 export default {
-	async asyncData() {
+    async asyncData() {
         // API for trees
         const carbon = await axios.post(
             "https://isvonshaljavzm4qc3g3xmwepm.appsync-api.ap-southeast-1.amazonaws.com/graphql",
@@ -85,10 +109,12 @@ export default {
                 }
             }
         );
-		const grab = carbon.data.data.getTotalCarbonSum.data.grab
-		const others = carbon.data.data.getTotalCarbonSum.data.foodpanda + carbon.data.data.getTotalCarbonSum.data.robinhood 
-		
-		const top100Rank = await axios.post(
+        const grab = carbon.data.data.getTotalCarbonSum.data.grab;
+        const others =
+            carbon.data.data.getTotalCarbonSum.data.foodpanda +
+            carbon.data.data.getTotalCarbonSum.data.robinhood;
+
+        const top100Rank = await axios.post(
             "https://isvonshaljavzm4qc3g3xmwepm.appsync-api.ap-southeast-1.amazonaws.com/graphql",
             {
                 query: `query MyQuery {
@@ -113,27 +139,29 @@ export default {
             ranks.push({
                 name: rankList[i].username,
                 points: rankList[i].grab_points
-            })
+            });
         }
-		
-		return {
-			ranks,
-			dataDonut: {
+
+        return {
+            ranks,
+            dataDonut: {
                 labels: ["Grab", "Others"],
                 data: [grab.toFixed(4), others.toFixed(4)],
                 backgroundColor: ["rgba(68, 207, 95, 1)", "rgba(0, 0, 0, 0.1)"],
                 unit: "g of Carbon",
                 text: "Carbon Emissions"
             }
-		}
-	},
+        };
+    },
     layout: "main",
     components: {
         RankingCard,
-		DoughnutElem
+        DoughnutElem,
+		DateForCard
     },
     data() {
         return {
+            testtest: today,
             data: {
                 labels: [
                     "Monday",
@@ -149,7 +177,7 @@ export default {
                         label: "g of Carbon",
                         data: [180, 386, 298, 112, 438, 230, 379],
                         backgroundColor: "rgba(68, 207, 95, 1)",
-                        borderWidth: 0,
+                        borderWidth: 0
                     }
                 ]
             },
