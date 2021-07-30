@@ -8,7 +8,7 @@
                     <h3 class="text-donut">
                         Season:
                     </h3>
-                    <h1 class="text-head-donut">July 2021</h1>
+                    <h1 class="text-head-donut">{{thisMonth}} {{thisYear}}</h1>
                     <h3 class="text-donut">Users:</h3>
                     <h1 class="text-head-donut">{{ user_number }}</h1>
                     <h3 class="text-donut">Total CO<sub>2</sub>:</h3>
@@ -177,6 +177,25 @@ import DonateBtn from "~/components/donate_button.vue"; // The donate button
 import DoughnutElem from "~/components/doughnut_elem.vue";
 import axios from "axios";
 
+const today = new Date();
+const monthOfYear = [
+    "JAN",
+    "FEB",
+    "MAR",
+    "APR",
+    "MAY",
+    "JUN",
+    "JUL",
+    "AUG",
+    "SEP",
+    "OCT",
+    "NOV",
+    "DEC"
+];
+
+const thisYear = today.getFullYear();
+const thisMonthName = monthOfYear[today.getMonth()]
+
 export default {
     async asyncData() {
         // API for trees
@@ -289,7 +308,9 @@ export default {
     layout: "main",
     data() {
         return {
-			user_number: ''
+			user_number: '',
+			thisMonth: thisMonthName,
+			thisYear: thisYear
 		};
     },
     methods: {

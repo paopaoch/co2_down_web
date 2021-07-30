@@ -24,9 +24,7 @@
                     >
                         <div class="card-body">
                             <h3 class="text-white">Foodpanda Summary</h3>
-                            <div class="text-white mb-4">
-                                Mon 2 - Sun 8 August 2021
-                            </div>
+                            <date-for-card></date-for-card>
                             <bar-bingsu
                                 :chartdata="data"
                                 :options="options"
@@ -58,6 +56,7 @@ import "~/assets/css/index.css";
 
 import RankingCard from "~/components/ranking_card.vue";
 import DoughnutElem from "~/components/doughnut_elem.vue";
+import DateForCard from "~/components/date_for_card.vue"
 import axios from "axios";
 
 export default {
@@ -114,7 +113,33 @@ export default {
                 name: rankList[i].username,
                 points: rankList[i].foodpanda_points
             })
-        }
+        };
+
+		const dayBarData = await axios.post(
+            "https://isvonshaljavzm4qc3g3xmwepm.appsync-api.ap-southeast-1.amazonaws.com/graphql",
+            {
+                query: `query MyQuery {
+							getTotalCo2AmountByCompany {
+								data {
+									day
+									foodpanda
+								}
+								status
+							}
+						}`
+            },
+            {
+                headers: {
+                    "x-api-key": process.env.API_KEY
+                }
+            }
+        );
+		let dayLabels = []
+		let barData = []
+		dayBarData.data.data.getTotalCo2AmountByCompany.data.slice().reverse().forEach(element => {
+			dayLabels.push(element.day)
+			barData.push(element.foodpanda.toFixed(4))
+		});
         return {
 			ranks,
             dataDonut: {
@@ -123,35 +148,28 @@ export default {
                 backgroundColor: ["rgba(215, 3, 101, 1)", "rgba(0, 0, 0, 0.1)"],
                 unit: "g of Carbon",
                 text: "Carbon Emissions"
-            }
-        };
-    },
-    layout: "main",
-    components: {
-        DoughnutElem,
-        RankingCard
-    },
-    data() {
-        return {
-            data: {
-                labels: [
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                    "Saturday",
-                    "Sunday"
-                ],
+            },
+			data: {
+                labels: dayLabels,
                 datasets: [
                     {
                         label: "g of Carbon",
-                        data: [180, 386, 298, 112, 438, 230, 379],
+                        data: barData,
                         backgroundColor: "rgba(215, 3, 101, 1)",
                         borderWidth: 0
                     }
                 ]
             },
+        };
+    },
+    layout: "main",
+    components: {
+        DoughnutElem,
+        RankingCard,
+		DateForCard
+    },
+    data() {
+        return {
             options: {
                 maintainAspectRatio: false,
                 scales: {

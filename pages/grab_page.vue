@@ -60,32 +60,6 @@ import DoughnutElem from "~/components/doughnut_elem.vue";
 import DateForCard from "~/components/date_for_card.vue"
 import axios from "axios";
 
-const today = new Date();
-const yesterday = new Date(
-    today.getFullYear(),
-    today.getMonth(),
-    today.getDate() - 1
-);
-const lastWeek = new Date(
-    today.getFullYear(),
-    today.getMonth(),
-    today.getDate() - 7
-);
-const monthOfYear = [
-    "JAN",
-    "FEB",
-    "MAR",
-    "APR",
-    "MAY",
-    "JUN",
-    "JUL",
-    "AUG",
-    "SEP",
-    "OCT",
-    "NOV",
-    "DEC"
-];
-
 export default {
     async asyncData() {
         // API for trees
@@ -140,7 +114,33 @@ export default {
                 name: rankList[i].username,
                 points: rankList[i].grab_points
             });
-        }
+        };
+
+		const dayBarData = await axios.post(
+            "https://isvonshaljavzm4qc3g3xmwepm.appsync-api.ap-southeast-1.amazonaws.com/graphql",
+            {
+                query: `query MyQuery {
+							getTotalCo2AmountByCompany {
+								data {
+									day
+									grab
+								}
+								status
+							}
+						}`
+            },
+            {
+                headers: {
+                    "x-api-key": process.env.API_KEY
+                }
+            }
+        );
+		let dayLabels = []
+		let barData = []
+		dayBarData.data.data.getTotalCo2AmountByCompany.data.slice().reverse().forEach(element => {
+			dayLabels.push(element.day)
+			barData.push(element.grab.toFixed(4))
+		});
 
         return {
             ranks,
@@ -150,6 +150,17 @@ export default {
                 backgroundColor: ["rgba(68, 207, 95, 1)", "rgba(0, 0, 0, 0.1)"],
                 unit: "g of Carbon",
                 text: "Carbon Emissions"
+            },
+			data: {
+                labels: dayLabels,
+                datasets: [
+                    {
+                        label: "g of Carbon",
+                        data: barData,
+                        backgroundColor: "rgba(68, 207, 95, 1)",
+                        borderWidth: 0
+                    }
+                ]
             }
         };
     },
@@ -161,26 +172,6 @@ export default {
     },
     data() {
         return {
-            testtest: today,
-            data: {
-                labels: [
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                    "Saturday",
-                    "Sunday"
-                ],
-                datasets: [
-                    {
-                        label: "g of Carbon",
-                        data: [180, 386, 298, 112, 438, 230, 379],
-                        backgroundColor: "rgba(68, 207, 95, 1)",
-                        borderWidth: 0
-                    }
-                ]
-            },
             options: {
                 maintainAspectRatio: false,
                 scales: {

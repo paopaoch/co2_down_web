@@ -10,10 +10,37 @@
     </div>
 </template>
 <script>
+
+const today = new Date();
+        const yesterday = new Date(
+            today.getFullYear(),
+            today.getMonth(),
+            today.getDate() - 1
+        );
+        const lastWeek = new Date(
+            today.getFullYear(),
+            today.getMonth(),
+            today.getDate() - 7
+        );
+        const monthOfYear = [
+            "JAN",
+            "FEB",
+            "MAR",
+            "APR",
+            "MAY",
+            "JUN",
+            "JUL",
+            "AUG",
+            "SEP",
+            "OCT",
+            "NOV",
+            "DEC"
+        ];
+
 export default {
-	data() {
-		return {
-			barHeader: {
+    data() {
+        return {
+            barHeader: {
                 startDayNo: String(lastWeek.getDate()).padStart(2, "0"),
                 endDayNo: String(yesterday.getDate()).padStart(2, "0"),
 
@@ -25,35 +52,8 @@ export default {
                 startYear: lastWeek.getFullYear(),
                 endYear: yesterday.getFullYear()
             }
-		}
-	}
+        };
+    }
 };
-
-const today = new Date();
-const yesterday = new Date(
-    today.getFullYear(),
-    today.getMonth(),
-    today.getDate() - 1
-);
-const lastWeek = new Date(
-    today.getFullYear(),
-    today.getMonth(),
-    today.getDate() - 7
-);
-const monthOfYear = [
-    "JAN",
-    "FEB",
-    "MAR",
-    "APR",
-    "MAY",
-    "JUN",
-    "JUL",
-    "AUG",
-    "SEP",
-    "OCT",
-    "NOV",
-    "DEC"
-];
-
 </script>
 <style></style>
