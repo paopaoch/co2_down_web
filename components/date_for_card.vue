@@ -10,32 +10,31 @@
     </div>
 </template>
 <script>
-
 const today = new Date();
-        const yesterday = new Date(
-            today.getFullYear(),
-            today.getMonth(),
-            today.getDate() - 1
-        );
-        const lastWeek = new Date(
-            today.getFullYear(),
-            today.getMonth(),
-            today.getDate() - 7
-        );
-        const monthOfYear = [
-            "JAN",
-            "FEB",
-            "MAR",
-            "APR",
-            "MAY",
-            "JUN",
-            "JUL",
-            "AUG",
-            "SEP",
-            "OCT",
-            "NOV",
-            "DEC"
-        ];
+const yesterday = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate() - 1
+);
+const lastWeek = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    today.getDate() - 7
+);
+const monthOfYear = [
+    "JAN",
+    "FEB",
+    "MAR",
+    "APR",
+    "MAY",
+    "JUN",
+    "JUL",
+    "AUG",
+    "SEP",
+    "OCT",
+    "NOV",
+    "DEC"
+];
 
 export default {
     data() {

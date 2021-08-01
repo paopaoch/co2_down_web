@@ -136,12 +136,10 @@ export default {
         );
 		let dayLabels = []
 		let barData = []
-		console.log(dayBarData.data.data.getTotalCo2AmountByCompany.data);
 		dayBarData.data.data.getTotalCo2AmountByCompany.data.slice().reverse().forEach(element => {
 			dayLabels.push(element.day)
 			barData.push(element.robinhood.toFixed(4))
 		});
-		console.log(dayLabels);
 		return {
 			ranks,
 			dataDonut: {
