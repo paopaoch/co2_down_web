@@ -24,9 +24,9 @@
                                 your food delivery apps, and contribute to a
                                 better world today.
                             </p>
-                            <div class="text-footer">
+                            <!-- <div class="text-footer">
                                 [this but in Thai]
-                            </div>
+                            </div> -->
                         </div>
                         <div class="row">
                             <div class="col-6 mt-3 pl-0">
